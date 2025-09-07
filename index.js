@@ -2,6 +2,8 @@
 require('dotenv').config();
 const express = require("express");
 const { connectToMongoDB } = require("./connect");
+const userAuth = require("./routes/handleUserLoginAndSignupRoutes");
+const bcrypt = require("bcryptjs");
 const PORT = process.env.PORT || 8000;
 const MONGO_URL = process.env.URL;
 
@@ -10,6 +12,8 @@ const MONGO_URL = process.env.URL;
 
 const app = express();
 
+app.use(express.json());
+app.use("/" , userAuth);
 
 
 connectToMongoDB(MONGO_URL)

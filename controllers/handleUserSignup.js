@@ -1,7 +1,6 @@
 const User = require("../models/UserSchema");
 const bcrypt = require("bcrypt");
 
-
 const handleUserSignup = async (req , res) =>{
     try {
         const {name , email , password} = await req.body;
